@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: park-energy-billing
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:${DB_PORT:5439}/${DB_NAME:energy}
+    username: ${DB_USER:energy}
+    password: ${DB_PASSWORD:energy}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Asia/Shanghai
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    default-schema: public
+
+app:
+  timezone: Asia/Shanghai
+  # 判定“缺失读数”的最大允许采样间隔倍数（间隔 > cadence * 该倍数视为缺失）
+  missing-gap-factor: 1.5
+  # 阶梯附加的月度周期：自然月
+  billing-currency: CNY
+  # 启动时幂等播种样本表计/费率/日历/读数
+  seed:
+    enabled: true
+    samples-dir: ${SAMPLES_DIR:./data/samples}

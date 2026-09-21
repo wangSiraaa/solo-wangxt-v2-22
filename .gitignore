@@ -1,5 +1,4 @@
 
-
 # SOLO initial credential and cache exclusions
 .env
 .env.*
@@ -23,3 +22,15 @@ venv/
 __pycache__/
 .pytest_cache/
 .DS_Store
+
+# 项目构建与运行期产物
+target/
+frontend/dist/
+backend/run.log
+frontend/run.log
+data/pgdata/
+data/pg.log
+data/*.pid
+tools/
+.downloads/
+backend/data/
