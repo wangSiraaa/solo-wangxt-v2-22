@@ -23,3 +23,9 @@ venv/
 __pycache__/
 .pytest_cache/
 .DS_Store
+
+# 本地便携工具链（JDK/Maven/PostgreSQL）与构建产物
+.tools/
+backend/target/
+frontend/dist/
+samples/_tmp_*.csv
